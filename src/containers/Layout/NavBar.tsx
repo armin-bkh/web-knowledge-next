@@ -15,13 +15,13 @@ function NavBar(props: INavbarProps, ref: any) {
 
   return (
     <nav
-      className={`fixed md:relative right-0 left-0 -z-10 top-0 bottom-0 bg-opacity-30 dark:bg-opacity-30 transition-all ${
+      className={`fixed md:relative right-0 left-0 -z-10 md:z-auto top-0 bottom-0 bg-opacity-30 dark:bg-opacity-30 transition-all ${
         isOpen ? "bg-gray-400 dark:bg-gray-900 md:bg-transparent z-20" : null
       }`}
     >
       <ul
         ref={ref}
-        className={`bg-gray-50 dark:bg-gray-dark dark:md:bg-transparent md:bg-transparent shadow-xl md:shadow-none fixed md:static left-10 right-10 rounded-t-2xl md:rounded-none p-2 flex flex-col md:flex-row gap-2 md:gap-0 transition-all ${
+        className={`bg-gray-50 z-20 dark:bg-gray-dark dark:md:bg-transparent md:bg-transparent shadow-xl md:shadow-none fixed md:static left-10 right-10 rounded-t-2xl md:rounded-none p-2 flex flex-col md:flex-row gap-2 md:gap-0 transition-all ${
           isOpen ? "bottom-0" : "-bottom-full"
         } `}
       >
