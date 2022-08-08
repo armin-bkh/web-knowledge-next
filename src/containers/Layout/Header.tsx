@@ -67,27 +67,29 @@ function Header() {
   };
 
   return (
-    <header className="shadow-md p-5">
+    <header className="shadow-md px-5 py-3 dark:text-light">
       <div className="container flex items-center justify-between mx-auto">
         <div className="flex items-center">
-          <div className="font-extrabold text-cyan-700 mr-2">WEB Knowledge</div>
+          <div className="font-extrabold text-cyan-light dark:text-light mr-2">
+            WEB Knowledge
+          </div>
           <ChangeTheme />
         </div>
         <NavBar ref={navRef} navLinks={navLinks} isOpen={isOpen} />
         <button
           id="ham-menu"
-          className="md:hidden flex flex-col gap-1 z-10"
+          className="md:hidden flex flex-col gap-1 z-20"
           type="button"
           onClick={handleOpenMenu}
         >
-          <div id="ham-menu" className="bg-cyan-700 h-1 w-7 rounded-md"></div>
+          <div id="ham-menu" className="bg-cyan-light h-1 w-7 rounded-md"></div>
           <div
             id="ham-menu"
-            className={`bg-cyan-700 h-1 rounded-md transition-all ${
+            className={`bg-cyan-light h-1 rounded-md transition-all ${
               isOpen ? "w-5" : "w-7"
             }`}
           ></div>
-          <div id="ham-menu" className="bg-cyan-700 h-1 w-7 rounded-md"></div>
+          <div id="ham-menu" className="bg-cyan-light h-1 w-7 rounded-md"></div>
         </button>
       </div>
     </header>

@@ -7,7 +7,14 @@ module.exports = {
   ],
   darkMode: "class",
   theme: {
-    extend: {},
+    extend: {
+      colors: {
+        "gray-darkest": "#283149",
+        "gray-dark": "#404B69",
+        "cyan-light": "#00818A",
+        light: "#DBEDF3",
+      },
+    },
   },
   plugins: [require("@tailwindcss/aspect-ratio")],
 };
