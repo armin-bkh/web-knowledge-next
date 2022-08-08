@@ -5,7 +5,7 @@ export interface ILayoutProps {
   children: JSX.Element | JSX.Element[];
 }
 
-function Layout(props: ILayoutProps) {
+const Layout = (props: ILayoutProps) => {
   const { children } = props;
   return (
     <>
@@ -13,6 +13,6 @@ function Layout(props: ILayoutProps) {
       {children}
     </>
   );
-}
+};
 
 export default Layout;

@@ -18,7 +18,7 @@ export interface IThemeProviderProps {
   children: JSX.Element | JSX.Element[];
 }
 
-function ThemeProvider(props: IThemeProviderProps) {
+const ThemeProvider = (props: IThemeProviderProps) => {
   const { children } = props;
 
   const [theme, setTheme] = useState<TTheme["theme"] | null>(null);
@@ -80,7 +80,7 @@ function ThemeProvider(props: IThemeProviderProps) {
       {theme && children}
     </ThemeContext.Provider>
   );
-}
+};
 
 export default ThemeProvider;
 

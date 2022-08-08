@@ -29,7 +29,7 @@ const navLinks: TNavLink[] = [
   },
 ];
 
-function Header() {
+const Header = () => {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const { isLandscape, isMobile } = useOrientation();
@@ -94,6 +94,6 @@ function Header() {
       </div>
     </header>
   );
-}
+};
 
 export default Header;

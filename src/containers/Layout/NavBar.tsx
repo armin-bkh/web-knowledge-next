@@ -8,7 +8,7 @@ export interface INavbarProps {
   navLinks: TNavLink[];
 }
 
-function NavBar(props: INavbarProps, ref: any) {
+const NavBar = (props: INavbarProps, ref: any) => {
   const { isOpen, navLinks } = props;
 
   const router = useRouter();
@@ -35,7 +35,7 @@ function NavBar(props: INavbarProps, ref: any) {
       </ul>
     </nav>
   );
-}
+};
 
 export default forwardRef(NavBar);
 

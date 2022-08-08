@@ -1,7 +1,7 @@
 import { useTheme } from "@/containers/Providers/ThemeProvider";
 import React from "react";
 
-function ChangeTheme() {
+const ChangeTheme = () => {
   const { theme, handleToggleTheme } = useTheme();
   return (
     <button
@@ -16,6 +16,6 @@ function ChangeTheme() {
       ></div>
     </button>
   );
-}
+};
 
 export default ChangeTheme;
