@@ -48,7 +48,7 @@ export function NavLink(props: INavLinkProps) {
   const { isActive, navLink } = props;
 
   return (
-    <li className="relative">
+    <li className="relative first:mt-0 mt-2 md:mt-0">
       <Link href={navLink.href}>
         <a
           className={`px-5 py-2 font-bold ${isActive ? "text-cyan-700" : null}`}

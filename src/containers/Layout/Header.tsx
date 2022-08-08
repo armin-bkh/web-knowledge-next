@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useRouter } from "next/router";
 import NavBar from "@/containers/Layout/NavBar";
 import { useOrientation } from "@/hooks/useOreintation";
+import ChangeTheme from "@/components/common/ChangeTheme/ChangeTheme";
 
 export type TNavLink = {
   href: string;
@@ -31,12 +32,14 @@ const navLinks: TNavLink[] = [
 function Header() {
   const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const isLandscape = useOrientation();
+  const { isLandscape, isMobile } = useOrientation();
   const navRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
-    setIsOpen(isLandscape && false);
-  }, [isLandscape]);
+    if (!isMobile) {
+      setIsOpen(isLandscape && false);
+    }
+  }, [isLandscape, isMobile]);
 
   useEffect(() => {
     document.addEventListener("mousedown", handleCloseMenu);
@@ -66,7 +69,10 @@ function Header() {
   return (
     <header className="shadow-md p-5">
       <div className="container flex items-center justify-between mx-auto">
-        <div className="font-extrabold text-cyan-700">WEB Knowledge</div>
+        <div className="flex items-center">
+          <div className="font-extrabold text-cyan-700 mr-2">WEB Knowledge</div>
+          <ChangeTheme />
+        </div>
         <NavBar ref={navRef} navLinks={navLinks} isOpen={isOpen} />
         <button
           id="ham-menu"
