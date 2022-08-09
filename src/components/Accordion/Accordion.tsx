@@ -11,7 +11,7 @@ const Accordion = () => {
   };
 
   return (
-    <div className="shadow rounded-2xl overflow-hidden">
+    <div className="shadow-lg rounded-2xl overflow-hidden">
       <div
         className="bg-cyan-light text-light p-5 cursor-pointer flex justify-between"
         onClick={handleToggleAccordion}

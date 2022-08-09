@@ -1,6 +1,8 @@
-import Accordion from "@/components/Accordion/Accordion";
 import { NextPage } from "next";
 import React from "react";
+
+import Accordion from "@/components/Accordion/Accordion";
+import SortBy from "@/components/SortBy/SortBy";
 
 const BlogsPage: NextPage = () => {
   return (
@@ -9,9 +11,9 @@ const BlogsPage: NextPage = () => {
         {/* Accordion component */}
         <Accordion />
       </section>
-      <section className="bg-red-200 col-span-12 md:col-span-9">
+      <section className="col-span-12 md:col-span-9 flex">
         {/* Sort component */}
-        sort
+        <SortBy />
       </section>
       <section className="bg-blue-200 col-span-12 md:col-span-9">
         {/* BlogList component */}
