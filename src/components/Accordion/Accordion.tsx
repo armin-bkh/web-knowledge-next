@@ -13,7 +13,7 @@ const Accordion = () => {
   return (
     <div className="shadow-lg rounded-2xl overflow-hidden">
       <div
-        className="bg-cyan-light text-light p-5 cursor-pointer flex justify-between"
+        className="bg-cyan-light dark:bg-light dark:text-cyan-light text-light p-5 cursor-pointer flex justify-between"
         onClick={handleToggleAccordion}
       >
         <p>
@@ -27,12 +27,16 @@ const Accordion = () => {
           width={18}
         />
       </div>
-      <div className={`p-5 ${isOpen ? "block" : "hidden"}`}>
+      <div
+        className={`p-5 ${
+          isOpen ? "block" : "hidden"
+        } dark:bg-gray-dark dark:text-light`}
+      >
         <ul>
           {staticCategories.map((category, index) => (
             <li
               key={index}
-              className="py-2 cursor-pointer last:border-b-0 border-b"
+              className="py-2 cursor-pointer last:border-b-0 border-b dark:border-gray-darkest"
             >
               {category}
             </li>
