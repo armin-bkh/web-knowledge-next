@@ -3,7 +3,7 @@ import React from "react";
 
 const staticSortTypes = ["Popular", "most views", "new blogs"];
 
-const SortBy = () => {
+const SortBar = () => {
   return (
     <div className="flex flex-1 items-center bg-white dark:bg-gray-dark rounded-2xl shadow-lg">
       <p className="mx-5 font-light dark:text-light">
@@ -23,4 +23,4 @@ const SortBy = () => {
   );
 };
 
-export default SortBy;
+export default SortBar;

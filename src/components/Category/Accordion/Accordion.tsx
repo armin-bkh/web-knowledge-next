@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { ChevronDownIcon, FilterIcon } from "@heroicons/react/outline";
 
-const staticCategories = ["javascript", "nodejs", "react", "vuejs"];
+export const staticCategories = ["javascript", "nodejs", "react", "vuejs"];
 
 const Accordion = () => {
   const [isOpen, setIsOpen] = useState(true);
@@ -28,7 +28,7 @@ const Accordion = () => {
         />
       </div>
       <div
-        className={`p-5 ${
+        className={`py-2 ${
           isOpen ? "block" : "hidden"
         } dark:bg-gray-dark dark:text-light`}
       >
@@ -36,7 +36,7 @@ const Accordion = () => {
           {staticCategories.map((category, index) => (
             <li
               key={index}
-              className="py-2 cursor-pointer last:border-b-0 border-b dark:border-gray-darkest"
+              className="py-2 cursor-pointer last:border-b-0 border-b dark:border-gray-darkest hover:bg-light hover:dark:bg-cyan-light px-5"
             >
               {category}
             </li>

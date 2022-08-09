@@ -9,9 +9,9 @@ const BlogsList = (props: IBlogsListProps) => {
   const { blogs } = props;
 
   return (
-    <div className="grid-cols-12 grid gap-10">
+    <div className="md:grid-cols-12 grid gap-10">
       {blogs.map((blog, index) => (
-        <BlogItem key={index} blog={blog} />
+        <BlogItem key={index} blog={blog} index={index} />
       ))}
     </div>
   );
