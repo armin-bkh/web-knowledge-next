@@ -3,6 +3,16 @@ import React from "react";
 
 import Accordion from "@/components/Accordion/Accordion";
 import SortBy from "@/components/SortBy/SortBy";
+import BlogsList from "@/components/Blogs/BlogsList";
+
+const staticBlogs = [
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png",
+  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png",
+  "https://files.virgool.io/upload/users/128552/posts/e8abqiqowc2y/cjnw9y0ogmtr.png",
+  "https://files.virgool.io/upload/users/128552/posts/e8abqiqowc2y/cjnw9y0ogmtr.png",
+  "https://files.virgool.io/upload/users/128552/posts/e8abqiqowc2y/cjnw9y0ogmtr.png",
+];
 
 const BlogsPage: NextPage = () => {
   return (
@@ -15,9 +25,9 @@ const BlogsPage: NextPage = () => {
         {/* Sort component */}
         <SortBy />
       </section>
-      <section className="bg-blue-200 col-span-12 md:col-span-9">
+      <section className="col-span-12 md:col-span-9 grid">
         {/* BlogList component */}
-        blogs
+        <BlogsList blogs={staticBlogs} />
       </section>
     </main>
   );
