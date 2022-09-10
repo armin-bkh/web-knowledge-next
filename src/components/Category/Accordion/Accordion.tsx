@@ -1,9 +1,16 @@
 import React, { useState } from "react";
 import { ChevronDownIcon, FilterIcon } from "@heroicons/react/outline";
+import {TCategory} from "../../../global/types";
 
 export const staticCategories = ["javascript", "nodejs", "react", "vuejs"];
 
-const Accordion = () => {
+export type TAccordionProps = {
+    categories: TCategory[]
+}
+
+const Accordion = (props: TAccordionProps) => {
+    const { categories } = props
+
   const [isOpen, setIsOpen] = useState(true);
 
   const handleToggleAccordion = () => {
@@ -33,12 +40,12 @@ const Accordion = () => {
         } dark:bg-gray-dark dark:text-light`}
       >
         <ul>
-          {staticCategories.map((category, index) => (
+          {categories.map((category) => (
             <li
-              key={index}
+              key={category._id}
               className="py-2 cursor-pointer last:border-b-0 border-b dark:border-gray-darkest hover:bg-light hover:dark:bg-cyan-light px-5"
             >
-              {category}
+              {category.title}
             </li>
           ))}
         </ul>
