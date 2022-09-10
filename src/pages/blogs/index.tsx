@@ -6,7 +6,7 @@ import SortBar from "@/components/SortBar/SortBar";
 import BlogsList from "@/components/Blogs/BlogsList";
 import MobileCategory from "@/components/Category/MobileCategory/MobileCategory";
 import {getCategories} from "@/services/getCategories";
-import {TCategory, TPost} from "../global/types";
+import {TCategory, TPost} from "../../global/types";
 import {getPosts} from "@/services/getPosts";
 
 const staticBlogs = [
