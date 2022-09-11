@@ -1,9 +1,11 @@
 import React from "react";
 import { BookmarkIcon, HeartIcon } from "@heroicons/react/outline";
 import { AnnotationIcon } from "@heroicons/react/solid";
+import { TBlog } from "../../global/types";
+import Link from "next/link";
 
 export interface IBlogItemProps {
-  blog: any;
+  blog: TBlog;
   index: number;
 }
 
@@ -13,7 +15,10 @@ const BlogItem = (props: IBlogItemProps) => {
   return (
     <article className="md:col-span-6 xl:col-span-4 bg-white dark:bg-gray-dark shadow-lg rounded-2xl overflow-hidden max-h-[400px] flex flex-col">
       <div className="aspect-w-16 aspect-h-9">
-        <img src={blog} className="w-full h-full object-cover object-center" />
+        <img
+          src={blog.coverImage}
+          className="w-full h-full object-cover object-center"
+        />
       </div>
       <div className="bg-gray-dark/10 dark:bg-light/50 m-3 p-3 rounded-2xl flex-1 flex flex-col justify-between">
         <p className="mb-2 text-lg font-bold dark:text-light">
@@ -30,9 +35,11 @@ const BlogItem = (props: IBlogItemProps) => {
               />
               <p>Armin Bakhshi</p>
             </div>
-            <span className="bg-blue-100 transition rounded-full px-2 text-blue-500 hover:bg-blue-500 hover:text-white cursor-pointer">
-              Next.js
-            </span>
+            <Link href={`/blogs/${blog.category.englishTitle}`}>
+              <a className="bg-blue-100 transition rounded-full px-2 text-blue-500 hover:bg-blue-500 hover:text-white cursor-pointer">
+                {blog.category.englishTitle}
+              </a>
+            </Link>
           </div>
 
           <div className="flex justify-between items-center mt-3 text-xs">

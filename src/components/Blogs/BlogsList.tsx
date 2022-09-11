@@ -1,9 +1,9 @@
 import BlogItem from "@/components/Blogs/BlogItem";
 import React from "react";
-import {TPost} from "../../global/types";
+import { TBlogs } from "../../global/types";
 
 export interface IBlogsListProps {
-  blogs: TPost[];
+  blogs: TBlogs[];
 }
 
 const BlogsList = (props: IBlogsListProps) => {

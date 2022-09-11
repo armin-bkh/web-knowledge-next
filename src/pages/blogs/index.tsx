@@ -5,9 +5,9 @@ import Accordion from "@/components/Category/Accordion/Accordion";
 import SortBar from "@/components/SortBar/SortBar";
 import BlogsList from "@/components/Blogs/BlogsList";
 import MobileCategory from "@/components/Category/MobileCategory/MobileCategory";
-import {getCategories} from "@/services/getCategories";
-import {TCategory, TPost} from "../../global/types";
-import {getPosts} from "@/services/getPosts";
+import { getCategories } from "@/services/getCategories";
+import { TCategory, TBlog } from "../../global/types";
+import { getBlogs } from "@/services/getBlogs";
 
 const staticBlogs = [
   "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png",
@@ -19,12 +19,12 @@ const staticBlogs = [
 ];
 
 export type TBlogsPageProps = {
-    categories: TCategory[];
-    posts: TPost[]
-}
+  categories: TCategory[];
+  posts: TBlog[];
+};
 
 const BlogsPage: NextPage<TBlogsPageProps> = (props) => {
-    const { categories, posts } = props
+  const { categories, posts } = props;
   return (
     <main className="container lg:max-w-screen-xl px-4 md:px-4 mx-auto grid grid-cols-12 min-h-screen grid-rows-[30px_100px_minmax(400px,_1fr)] md:grid-rows-[60px_minmax(400px,_1fr)_100px] gap-5 py-5">
       <section className="col-span-12 md:col-span-3 md:row-span-2">
@@ -47,19 +47,22 @@ const BlogsPage: NextPage<TBlogsPageProps> = (props) => {
 
 export default BlogsPage;
 
-
 export const getServerSideProps = async () => {
-    const {data: {data: categories}} = await getCategories();
-    const {data: {data: postsData}} = await getPosts();
+  const {
+    data: { data: categories },
+  } = await getCategories();
+  const {
+    data: { data: postsData },
+  } = await getBlogs();
 
-    const {docs: posts} = postsData;
+  const { docs: posts } = postsData;
 
-    console.log(posts, 'posts ish ere')
+  console.log(posts, "posts ish ere");
 
-    return {
-        props: {
-            categories,
-            posts
-        }
-    }
-}
+  return {
+    props: {
+      categories,
+      posts,
+    },
+  };
+};
