@@ -1,5 +1,6 @@
-import { useTheme } from "@/containers/Providers/ThemeProvider";
 import React from "react";
+
+import { useTheme } from "@/containers/Providers/ThemeProvider";
 
 const ChangeTheme = () => {
   const { theme, handleToggleTheme } = useTheme();

@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from "react";
-import Link from "next/link";
 import { useRouter } from "next/router";
+
 import NavBar from "@/containers/Layout/NavBar";
 import { useOrientation } from "@/hooks/useOreintation";
 import ChangeTheme from "@/components/common/ChangeTheme/ChangeTheme";

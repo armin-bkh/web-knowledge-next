@@ -1,5 +1,6 @@
-import "../styles/globals.css";
+import "@/styles/globals.css";
 import { AppProps } from "next/app";
+
 import Layout from "@/containers/Layout";
 import ThemeProvider from "@/containers/Providers/ThemeProvider";
 

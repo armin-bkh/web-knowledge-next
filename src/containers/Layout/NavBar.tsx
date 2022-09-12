@@ -1,7 +1,8 @@
-import { TNavLink } from "@/containers/Layout/Header";
+import React, { forwardRef } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import React, { forwardRef } from "react";
+
+import { TNavLink } from "@/containers/Layout/Header";
 
 export interface INavbarProps {
   isOpen: boolean;

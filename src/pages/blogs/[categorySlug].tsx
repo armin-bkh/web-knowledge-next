@@ -4,11 +4,11 @@ import queryString from "query-string";
 
 import Accordion from "@/components/Category/Accordion/Accordion";
 import SortBar from "@/components/SortBar/SortBar";
-import BlogsList from "@/components/Blogs/BlogsList";
+import BlogsList from "@/components/Blogs/BlogList/BlogsList";
 import MobileCategory from "@/components/Category/MobileCategory/MobileCategory";
 import { getCategories } from "@/services/getCategories";
 import { getBlogs } from "@/services/getBlogs";
-import { TBlogsPageProps } from "@/pages/blogs/index";
+import { IBlogsPageProps } from "@/pages/blogs";
 
 const staticBlogs = [
   "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png",
@@ -19,7 +19,7 @@ const staticBlogs = [
   "https://files.virgool.io/upload/users/128552/posts/e8abqiqowc2y/cjnw9y0ogmtr.png",
 ];
 
-const BlogBySlugPage: NextPage<TBlogsPageProps> = (props) => {
+const BlogsBySlugPage: NextPage<IBlogsPageProps> = (props) => {
   const { categories, posts } = props;
   return (
     <main className="container lg:max-w-screen-xl px-4 md:px-4 mx-auto grid grid-cols-12 min-h-screen grid-rows-[30px_100px_minmax(400px,_1fr)] md:grid-rows-[60px_minmax(400px,_1fr)_100px] gap-5 py-5">
@@ -41,7 +41,7 @@ const BlogBySlugPage: NextPage<TBlogsPageProps> = (props) => {
   );
 };
 
-export default BlogBySlugPage;
+export default BlogsBySlugPage;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const query = {

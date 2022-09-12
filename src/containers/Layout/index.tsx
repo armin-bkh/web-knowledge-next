@@ -1,5 +1,6 @@
-import Header from "@/containers/Layout/Header";
 import React from "react";
+
+import Header from "@/containers/Layout/Header";
 
 export interface ILayoutProps {
   children: JSX.Element | JSX.Element[];

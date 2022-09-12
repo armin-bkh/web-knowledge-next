@@ -1,9 +1,10 @@
-import BlogItem from "@/components/Blogs/BlogItem";
 import React from "react";
-import { TBlogs } from "../../global/types";
+
+import BlogItem from "@/components/Blogs/BlogItem/BlogItem";
+import { TBlog } from "@/global/types";
 
 export interface IBlogsListProps {
-  blogs: TBlogs[];
+  blogs: TBlog[];
 }
 
 const BlogsList = (props: IBlogsListProps) => {
@@ -11,8 +12,8 @@ const BlogsList = (props: IBlogsListProps) => {
 
   return (
     <div className="md:grid-cols-12 grid gap-10">
-      {blogs.map((blog, index) => (
-        <BlogItem key={blog._id} blog={blog} index={index} />
+      {blogs.map((blog) => (
+        <BlogItem key={blog._id} blog={blog} />
       ))}
     </div>
   );

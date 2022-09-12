@@ -1,15 +1,14 @@
 import React, { useState } from "react";
-import { ChevronDownIcon, FilterIcon } from "@heroicons/react/outline";
-import { TCategory } from "../../../global/types";
 import Link from "next/link";
+import { ChevronDownIcon, FilterIcon } from "@heroicons/react/outline";
 
-export const staticCategories = ["javascript", "nodejs", "react", "vuejs"];
+import { TCategory } from "@/global/types";
 
-export type TAccordionProps = {
+export interface IAccordionProps {
   categories: TCategory[];
-};
+}
 
-const Accordion = (props: TAccordionProps) => {
+const Accordion = (props: IAccordionProps) => {
   const { categories } = props;
 
   const [isOpen, setIsOpen] = useState(true);

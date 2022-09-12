@@ -1,7 +1,7 @@
-import { staticCategories } from "@/components/Category/Accordion/Accordion";
 import React from "react";
-import { TCategory } from "../../../global/types";
 import Link from "next/link";
+
+import { TCategory } from "@/global/types";
 
 export type TMobileCategoryProps = {
   categories: TCategory[];

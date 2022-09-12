@@ -1,7 +1,7 @@
-import { AdjustmentsIcon } from "@heroicons/react/outline";
 import React from "react";
+import { AdjustmentsIcon } from "@heroicons/react/outline";
 
-const staticSortTypes = ["Popular", "most views", "new blogs"];
+const sorttypes = ["Popular", "most views", "new blogs"];
 
 const SortBar = () => {
   return (
@@ -10,7 +10,7 @@ const SortBar = () => {
         <AdjustmentsIcon className="mr-2 inline" width={18} /> Sort by:
       </p>
       <ul className="flex items-center gap-x-12 h-full">
-        {staticSortTypes.map((sort, index) => (
+        {sorttypes.map((sort, index) => (
           <li
             key={index}
             className="relative text-cyan-light dark:text-light font-bold after:content-[''] after:w-8 after:h-0.5 after:absolute after:bg-cyan-light dark:after:bg-light h-full flex items-center after:bottom-0 after:left-0 cursor-pointer"

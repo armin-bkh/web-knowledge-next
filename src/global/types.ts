@@ -25,9 +25,35 @@ export type TBlog = {
   slug: string;
   hashId: string;
   briefText: string;
+  readingTime: number;
+  text: string;
+  author: {
+    biography: string;
+    _id: string;
+    name: string;
+  };
   category: {
     _id: string;
     title: string;
     englishTitle: string;
   };
+  createdAt: Date;
+  updatedAt: Date;
+  __v: number;
+};
+
+export type TComment = {
+  _id: string;
+  postId: string;
+  responseTo: string | null;
+  createdAt: Date;
+  updatedAt: Date;
+  status: number;
+  writer: TWriter;
+  __v: number;
+};
+
+export type TWriter = {
+  _id: string;
+  name: string;
 };
