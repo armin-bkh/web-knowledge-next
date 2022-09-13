@@ -13,9 +13,9 @@ const AuthorReadingInfo = (props: IAuthorReadingInfo) => {
   const { post } = props;
 
   return (
-    <div className="w-1/2 p-5 rounded-md shadow dark:shadow-none dark:bg-gray-dark">
-      <p className="dark:text-gray-400">{post.author.name}</p>
-      <p className="dark:text-gray-500 text-sm">{post.author.biography}</p>
+    <div className="w-full p-5 rounded-md shadow dark:shadow-none dark:bg-gray-dark sticky top-5">
+      <p className="dark:text-gray-400 text-lg">{post.author.name}</p>
+      <p className="dark:text-gray-500 text-base">{post.author.biography}</p>
       <Hr darkest styles={{ margin: "8px 0" }} />
       <div className="flex items-center justify-around">
         <button className="px-2 py-1 max-h-5 rounded-md flex items-center text-cyan-light">

@@ -16,12 +16,12 @@ const FooterPostSection = (props: IFooterPostSection) => {
 
   return (
     <footer className="w-full">
-      <div className="flex items-center mb-8">
+      <nav className="flex items-center mb-8">
         <Slug
           category={post.category}
           className="bg-white border text-gray-400 border-gray-300 hover:bg-gray-400 dark:bg-gray-400 dark:text-white dark:hover:bg-white dark:hover:text-gray-500"
         />
-      </div>
+      </nav>
       <div>
         <div className="flex items-center">
           <button className="px-2 py-1 max-h-5 rounded-md flex items-center text-cyan-light">

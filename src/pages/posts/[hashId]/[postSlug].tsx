@@ -27,8 +27,32 @@ const PostDetailPage: NextPage<IPostDetailPage> = (props) => {
         <div className="flex justify-between items-start">
           <AuthorSection date={date} post={post} />
         </div>
+        <div className="prose-lg lg:prose-xl prose-h1:font-black prose-h2:font-bold prose-p:text-base my-10 prose-p:text-justify dark:prose-h1:text-white dark:prose-h2:text-white dark:prose-p:text-gray-50">
+          <h1>{post.title}</h1>
+          <img src={post.coverImage} />
+          <h2>Hello mamad</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+          <h2>hello asghar</h2>
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do
+            eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim
+            ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+            aliquip ex ea commodo consequat. Duis aute irure dolor in
+            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+            pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+            culpa qui officia deserunt mollit anim id est laborum.
+          </p>
+        </div>
       </section>
-      <section className="hidden lg:flex md:flex-1 justify-center items-start">
+      <section className="hidden lg:flex md:flex-1 justify-center items-center p-5">
         <AuthorReadingInfo post={post} />
       </section>
       <FooterPostSection post={post} />
