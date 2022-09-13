@@ -27,19 +27,23 @@ export type TBlog = {
   briefText: string;
   readingTime: number;
   text: string;
-  author: {
-    biography: string;
-    _id: string;
-    name: string;
-  };
-  category: {
-    _id: string;
-    title: string;
-    englishTitle: string;
-  };
+  author: TAuthor;
+  category: TBlogCategory;
   createdAt: Date;
   updatedAt: Date;
   __v: number;
+};
+
+export type TBlogCategory = {
+  _id: string;
+  title: string;
+  englishTitle: string;
+};
+
+export type TAuthor = {
+  biography: string;
+  _id: string;
+  name: string;
 };
 
 export type TComment = {
