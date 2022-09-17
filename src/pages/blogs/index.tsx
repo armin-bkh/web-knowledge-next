@@ -1,13 +1,13 @@
 import { NextPage } from "next";
 import React from "react";
 
-import Accordion from "@/components/Category/Accordion/Accordion";
+import { getBlogs } from "@/services/getBlogs";
+import { getCategories } from "@/services/getCategories";
 import SortBar from "@/components/SortBar/SortBar";
 import BlogsList from "@/components/Blogs/BlogList/BlogsList";
+import Accordion from "@/components/Category/Accordion/Accordion";
 import MobileCategory from "@/components/Category/MobileCategory/MobileCategory";
-import { getCategories } from "@/services/getCategories";
 import { TCategory, TBlog } from "@/global/types";
-import { getBlogs } from "@/services/getBlogs";
 
 export interface IBlogsPageProps {
   categories: TCategory[];

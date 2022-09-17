@@ -1,14 +1,9 @@
 import React, { useMemo } from "react";
 import { GetServerSideProps, NextPage } from "next";
-import { BookmarkIcon, HeartIcon } from "@heroicons/react/outline";
-import { AnnotationIcon } from "@heroicons/react/solid";
 
-import Hr from "@/common/Hr/Hr";
-import { getPostBySlug } from "@/services/getPostBySlug";
 import { TBlog } from "@/global/types";
+import { getPostBySlug } from "@/services/getPostBySlug";
 import AuthorSection from "@/components/Post/AuthorSection/AuthorSection";
-import Slug from "@/common/Slug/Slug";
-import Spacer from "@/common/Spacer/Spacer";
 import FooterPostSection from "@/components/Post/FooterPostSection/FooterPostSection";
 import AuthorReadingInfo from "@/components/Post/AuthorReadingInfo/AuthorReadingInfo";
 
@@ -81,10 +76,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const {
     data: { data: post },
   } = await getPostBySlug(hashId, postSlug);
-
-  console.log(post, "data is hre");
-
-  console.log({ hashId, postSlug }, "post slug");
 
   return {
     props: {

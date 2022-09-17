@@ -1,10 +1,9 @@
 import React from "react";
-import Link from "next/link";
 import { BookmarkIcon, LinkIcon } from "@heroicons/react/outline";
 
-import { TBlog } from "@/global/types";
-import Spacer from "@/common/Spacer/Spacer";
 import Slug from "@/common/Slug/Slug";
+import Spacer from "@/common/Spacer/Spacer";
+import { TBlog } from "@/global/types";
 
 export interface IAuthorSectionProps {
   date: string;
@@ -45,7 +44,11 @@ const AuthorSection = (props: IAuthorSectionProps) => {
           <LinkIcon className="dark:text-light" width={20} />
         </button>
         <Spacer times={2} />
-        <button className="flex items-center ml-5 p-2 dark:bg-gray-400 dark:text-white dark:hover:bg-white dark:hover:text-gray-400 bg-white transition rounded-full px-4 text-gray-400 border border-gray-300 hover:bg-gray-400 hover:text-white cursor-pointer">
+        <button
+          className="flex items-center ml-5 p-2 dark:bg-gray-400 dark:text-white
+          dark:hover:bg-white dark:hover:text-gray-400 bg-white transition rounded-full
+          px-4 text-gray-400 border border-gray-300 hover:bg-gray-400 hover:text-white cursor-pointer"
+        >
           save <Spacer /> <BookmarkIcon width={20} />
         </button>
       </div>

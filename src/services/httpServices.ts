@@ -1,10 +1,11 @@
-import axios from 'axios';
+import axios from "axios";
+import config from "@/global/config";
 
-axios.defaults.baseURL = 'http://localhost:5050/api';
+axios.defaults.baseURL = config.webKnowledgeApi;
 
 export const http = {
-    get: axios.get,
-    post: axios.post,
-    put: axios.put,
-    delete: axios.delete,
-}
+  get: axios.get,
+  post: axios.post,
+  put: axios.put,
+  delete: axios.delete,
+};

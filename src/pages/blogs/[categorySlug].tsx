@@ -10,15 +10,6 @@ import { getCategories } from "@/services/getCategories";
 import { getBlogs } from "@/services/getBlogs";
 import { IBlogsPageProps } from "@/pages/blogs";
 
-const staticBlogs = [
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png",
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png",
-  "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Vue.js_Logo_2.svg/1200px-Vue.js_Logo_2.svg.png",
-  "https://files.virgool.io/upload/users/128552/posts/e8abqiqowc2y/cjnw9y0ogmtr.png",
-  "https://files.virgool.io/upload/users/128552/posts/e8abqiqowc2y/cjnw9y0ogmtr.png",
-  "https://files.virgool.io/upload/users/128552/posts/e8abqiqowc2y/cjnw9y0ogmtr.png",
-];
-
 const BlogsBySlugPage: NextPage<IBlogsPageProps> = (props) => {
   const { categories, posts } = props;
   return (

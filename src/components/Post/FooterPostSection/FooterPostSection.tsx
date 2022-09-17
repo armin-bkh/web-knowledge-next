@@ -1,13 +1,11 @@
 import React from "react";
-import { AnnotationIcon } from "@heroicons/react/solid";
-import { BookmarkIcon, HeartIcon } from "@heroicons/react/outline";
 
 import Hr from "@/common/Hr/Hr";
 import Slug from "@/common/Slug/Slug";
 import Spacer from "@/common/Spacer/Spacer";
-import { TBlog } from "@/global/types";
 import PostInteraction from "@/common/PostInteraction/PostInteraction";
 import SocialLinks from "@/components/Post/SocialLinks/SocialLinks";
+import { TBlog } from "@/global/types";
 
 export interface IFooterPostSection {
   post: TBlog;
@@ -26,7 +24,7 @@ const FooterPostSection = (props: IFooterPostSection) => {
       </nav>
       <div className="flex flex-col md:flex-row justify-between">
         <PostInteraction post={post} containerClassName="gap-x-7" />
-        <SocialLinks />
+        <SocialLinks post={post} />
       </div>
       <Hr styles={{ margin: "24px 0" }} />
       <div className="flex items-center">

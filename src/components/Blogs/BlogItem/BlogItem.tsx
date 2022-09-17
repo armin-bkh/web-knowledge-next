@@ -1,10 +1,8 @@
 import React from "react";
 import Link from "next/link";
-import { BookmarkIcon, HeartIcon } from "@heroicons/react/outline";
-import { AnnotationIcon } from "@heroicons/react/solid";
 
-import { TBlog } from "@/global/types";
 import PostInteraction from "@/common/PostInteraction/PostInteraction";
+import { TBlog } from "@/global/types";
 
 export interface IBlogItemProps {
   blog: TBlog;

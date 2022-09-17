@@ -8,13 +8,13 @@ import { AnnotationIcon } from "@heroicons/react/solid";
 
 import { TBlog } from "@/global/types";
 
-export interface IPostInterAction {
+export interface IPostInterActionProps {
   post: TBlog;
   isSmall?: boolean;
   containerClassName?: string;
 }
 
-const PostInteraction = (props: IPostInterAction) => {
+const PostInteraction = (props: IPostInterActionProps) => {
   const { post, isSmall, containerClassName } = props;
 
   const iconSize = useMemo(() => (isSmall ? 12 : 20), [isSmall]);

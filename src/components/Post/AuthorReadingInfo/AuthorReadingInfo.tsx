@@ -1,10 +1,8 @@
 import React from "react";
-import { AnnotationIcon } from "@heroicons/react/solid";
-import { BookmarkIcon, HeartIcon } from "@heroicons/react/outline";
 
 import Hr from "@/common/Hr/Hr";
-import { TBlog } from "@/global/types";
 import PostInteraction from "@/common/PostInteraction/PostInteraction";
+import { TBlog } from "@/global/types";
 
 export interface IAuthorReadingInfo {
   post: TBlog;
