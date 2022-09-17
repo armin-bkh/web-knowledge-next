@@ -6,6 +6,7 @@ import Hr from "@/common/Hr/Hr";
 import Slug from "@/common/Slug/Slug";
 import Spacer from "@/common/Spacer/Spacer";
 import { TBlog } from "@/global/types";
+import PostInteraction from "@/common/PostInteraction/PostInteraction";
 
 export interface IFooterPostSection {
   post: TBlog;
@@ -23,17 +24,7 @@ const FooterPostSection = (props: IFooterPostSection) => {
         />
       </nav>
       <div>
-        <div className="flex items-center">
-          <button className="px-2 py-1 max-h-5 rounded-md flex items-center text-cyan-light">
-            <BookmarkIcon className="inline" width={20} />
-          </button>
-          <button className="px-2 py-1 max-h-5 rounded-md flex items-center text-cyan-light mx-2">
-            <HeartIcon className="inline" width={20} />
-          </button>
-          <button className="px-2 py-1 max-h-5 rounded-md flex items-center text-cyan-light">
-            0 <AnnotationIcon className="inline ml-1" width={20} />
-          </button>
-        </div>
+        <PostInteraction post={post} containerClassName="gap-x-7" />
       </div>
       <Hr styles={{ margin: "24px 0" }} />
       <div className="flex items-center">
