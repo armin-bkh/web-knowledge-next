@@ -27,7 +27,11 @@ const PostDetailPage: NextPage<IPostDetailPage> = (props) => {
         <div className="flex justify-between items-start">
           <AuthorSection date={date} post={post} />
         </div>
-        <div className="prose-lg lg:prose-xl prose-h1:font-black prose-h2:font-bold prose-p:text-base my-10 prose-p:text-justify dark:prose-h1:text-white dark:prose-h2:text-white dark:prose-p:text-gray-50">
+        <div
+          className="prose-lg lg:prose-xl prose-h1:font-black prose-h2:font-bold prose-p:text-base my-10 prose-p:text-justify
+          dark:prose-h1:text-white dark:prose-h2:text-white dark:prose-p:text-gray-50 prose-code:italic
+          prose-code:font-bold prose-code:text-sm dark:prose-code:text-white prose-pre:bg-gray-darkest dark:prose-pre:bg-gray-700 prose-pre:text-white dark:prose-pre:text-gray-50 prose-pre:text-sm"
+        >
           <h1>{post.title}</h1>
           <img src={post.coverImage} />
           <h2>Hello mamad</h2>
@@ -50,6 +54,16 @@ const PostDetailPage: NextPage<IPostDetailPage> = (props) => {
             pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
             culpa qui officia deserunt mollit anim id est laborum.
           </p>
+
+          <h2>pre tag is here</h2>
+          <code>`js.config.json`</code>
+          <pre>
+            {`module.exports = {
+  aliReza: new Date.now()
+  aliReza: new Date.now()
+  aliReza: new Date.now()
+}`}
+          </pre>
         </div>
       </section>
       <section className="hidden lg:flex md:flex-1 justify-center items-center p-5">
