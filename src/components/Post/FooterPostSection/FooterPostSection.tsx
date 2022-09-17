@@ -7,6 +7,7 @@ import Slug from "@/common/Slug/Slug";
 import Spacer from "@/common/Spacer/Spacer";
 import { TBlog } from "@/global/types";
 import PostInteraction from "@/common/PostInteraction/PostInteraction";
+import SocialLinks from "@/components/Post/SocialLinks/SocialLinks";
 
 export interface IFooterPostSection {
   post: TBlog;
@@ -23,8 +24,9 @@ const FooterPostSection = (props: IFooterPostSection) => {
           className="bg-white border text-gray-400 border-gray-300 hover:bg-gray-400 dark:bg-gray-400 dark:text-white dark:hover:bg-white dark:hover:text-gray-500"
         />
       </nav>
-      <div>
+      <div className="flex flex-col md:flex-row justify-between">
         <PostInteraction post={post} containerClassName="gap-x-7" />
+        <SocialLinks />
       </div>
       <Hr styles={{ margin: "24px 0" }} />
       <div className="flex items-center">

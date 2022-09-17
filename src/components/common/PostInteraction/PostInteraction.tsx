@@ -24,7 +24,9 @@ const PostInteraction = (props: IPostInterAction) => {
   );
 
   return (
-    <div className={`flex items-center gap-1 ${containerClassName}`}>
+    <div
+      className={`flex items-center gap-1 ${containerClassName} justify-between md:justify-start`}
+    >
       <button
         className={`${paddingSize} rounded-md flex items-center bg-blue-100 transition text-blue-500 hover:text-blue-100 hover:bg-blue-500`}
       >
