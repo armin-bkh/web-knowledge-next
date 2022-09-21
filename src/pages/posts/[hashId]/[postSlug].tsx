@@ -6,6 +6,7 @@ import { getPostBySlug } from "@/services/getPostBySlug";
 import AuthorSection from "@/components/Post/AuthorSection/AuthorSection";
 import FooterPostSection from "@/components/Post/FooterPostSection/FooterPostSection";
 import AuthorReadingInfo from "@/components/Post/AuthorReadingInfo/AuthorReadingInfo";
+import BlogsList from "@/components/Blogs/BlogList/BlogsList";
 
 export interface IPostDetailPage {
   post: TBlog;
@@ -65,6 +66,14 @@ const PostDetailPage: NextPage<IPostDetailPage> = (props) => {
         <AuthorReadingInfo post={post} />
       </section>
       <FooterPostSection post={post} />
+      {post.related.length > 0 && (
+        <section className="mt-10 w-full overflow-hidden">
+          <h2 className="text-4xl font-bold mb-10">Related</h2>
+          <div className="max-w-screen-xl mx-auto">
+            <BlogsList blogs={post.related} related />
+          </div>
+        </section>
+      )}
     </main>
   );
 };

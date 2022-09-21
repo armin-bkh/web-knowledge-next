@@ -6,13 +6,20 @@ import { TBlog } from "@/global/types";
 
 export interface IBlogItemProps {
   blog: TBlog;
+  related?: boolean;
 }
 
 const BlogItem = (props: IBlogItemProps) => {
-  const { blog } = props;
+  const { blog, related } = props;
 
   return (
-    <article className="md:col-span-6 xl:col-span-4 bg-white dark:bg-gray-dark shadow-lg rounded-2xl overflow-hidden max-h-[350px] flex flex-col">
+    <article
+      className={`${
+        related
+          ? "w-full md:w-[280px] flex-shrink-0 snap-start scroll-ml-9"
+          : "md:col-span-6 xl:col-span-4"
+      }  bg-white dark:bg-gray-dark shadow-lg rounded-2xl overflow-hidden max-h-[350px] flex flex-col`}
+    >
       <div className="aspect-w-16 aspect-h-9">
         <Link href={`/posts/${blog.hashId}/${blog.slug}`}>
           <a>

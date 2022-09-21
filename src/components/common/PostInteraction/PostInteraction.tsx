@@ -48,7 +48,7 @@ const PostInteraction = (props: IPostInterActionProps) => {
       <button
         className={`${paddingSize} rounded-md flex items-center bg-gray-300`}
       >
-        {post.comments.length}{" "}
+        {post.comments?.length}{" "}
         <AnnotationIcon className="inline ml-1" width={iconSize} />
       </button>
     </div>
