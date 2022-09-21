@@ -68,7 +68,7 @@ const PostDetailPage: NextPage<IPostDetailPage> = (props) => {
       <FooterPostSection post={post} />
       {post.related.length > 0 && (
         <section className="mt-10 w-full overflow-hidden">
-          <h2 className="text-4xl font-bold mb-10">Related</h2>
+          <h2 className="text-4xl font-bold mb-10 dark:text-white">Related</h2>
           <div className="max-w-screen-xl mx-auto">
             <BlogsList blogs={post.related} related />
           </div>
