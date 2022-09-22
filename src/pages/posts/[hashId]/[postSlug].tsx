@@ -7,6 +7,8 @@ import AuthorSection from "@/components/Post/AuthorSection/AuthorSection";
 import FooterPostSection from "@/components/Post/FooterPostSection/FooterPostSection";
 import AuthorReadingInfo from "@/components/Post/AuthorReadingInfo/AuthorReadingInfo";
 import BlogsList from "@/components/Blogs/BlogList/BlogsList";
+import PostComments from "@/components/Comments/PostComments/PostComments";
+import Spacer from "@/common/Spacer/Spacer";
 
 export interface IPostDetailPage {
   post: TBlog;
@@ -74,6 +76,8 @@ const PostDetailPage: NextPage<IPostDetailPage> = (props) => {
           </div>
         </section>
       )}
+      <Spacer times={2} />
+      <PostComments post={post} />
     </main>
   );
 };

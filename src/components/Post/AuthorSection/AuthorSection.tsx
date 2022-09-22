@@ -15,10 +15,7 @@ const AuthorSection = (props: IAuthorSectionProps) => {
   return (
     <header className="flex flex-col md:flex-row justify-between flex-1">
       <div className="flex items-center">
-        <img
-          className="rounded-full w-20 h-20"
-          src="https://png.pngtree.com/element_our/20190528/ourlarge/pngtree-personal-information-icon-image_1144468.jpg"
-        />
+        <img className="rounded-full w-20 h-20" src="/UserIcon.jpeg" />
         <div className="ml-2 flex flex-col h-full justify-center">
           <div className="flex">
             <p className="dark:text-light font-black text-lg">

@@ -50,6 +50,7 @@ export type TComment = {
   _id: string;
   postId: string;
   responseTo: string | null;
+  content: string;
   createdAt: Date;
   updatedAt: Date;
   status: number;
