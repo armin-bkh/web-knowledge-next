@@ -67,7 +67,7 @@ const Header = () => {
   };
 
   return (
-    <header className="shadow-md px-5 py-3 dark:text-light">
+    <header className="shadow-md px-5 py-3 dark:text-light sticky top-0 z-20 bg-gray-50 dark:bg-gray-darkest">
       <div className="container flex items-center justify-between mx-auto max-w-screen-xl">
         <div className="flex items-center">
           <div className="font-extrabold text-cyan-light dark:text-light mr-2">

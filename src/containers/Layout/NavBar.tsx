@@ -17,7 +17,7 @@ const NavBar = (props: INavbarProps, ref: any) => {
   return (
     <nav
       className={`fixed md:relative right-0 left-0 -z-10 md:z-auto top-0 bottom-0 bg-opacity-30 dark:bg-opacity-30 ${
-        isOpen ? "bg-gray-400 dark:bg-gray-900 md:bg-transparent z-20" : null
+        isOpen ? "bg-gray-400 dark:bg-gray-900 md:bg-transparent z-50" : null
       }`}
     >
       <ul

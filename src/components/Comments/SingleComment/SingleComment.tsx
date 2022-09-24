@@ -20,7 +20,7 @@ const SingleComment = (props: ISingleCommentProps) => {
   return (
     <div className="bg-white p-2 shadow rounded-md dark:bg-gray-dark/50 dark:text-white">
       <div className="flex items-center">
-        <img className="rounded-full w-14 h-14" src="/UserIcon.jpeg" />
+        <img className="rounded-full w-14 h-14" src="/icons/UserIcon.jpeg" />
         <p className="ml-2">{comment.writer.name}</p>
       </div>
       <p className="bg-gray-50 dark:bg-gray-dark p-3 mt-2 rounded-md">

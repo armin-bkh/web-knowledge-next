@@ -15,7 +15,7 @@ const AuthorSection = (props: IAuthorSectionProps) => {
   return (
     <header className="flex flex-col md:flex-row justify-between flex-1">
       <div className="flex items-center">
-        <img className="rounded-full w-20 h-20" src="/UserIcon.jpeg" />
+        <img className="rounded-full w-20 h-20" src="/icons/UserIcon.jpeg" />
         <div className="ml-2 flex flex-col h-full justify-center">
           <div className="flex">
             <p className="dark:text-light font-black text-lg">

@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@heroicons/react": "^1.0.6",
+    "@hookform/resolvers": "^2.9.8",
     "@types/react-copy-to-clipboard": "^5.0.4",
     "axios": "^0.27.2",
     "next": "12.2.4",
@@ -17,8 +18,10 @@
     "react": "18.2.0",
     "react-copy-to-clipboard": "^5.1.0",
     "react-dom": "18.2.0",
+    "react-hook-form": "^7.36.1",
     "react-icons": "^4.4.0",
-    "react-toast-notifications": "^2.5.1"
+    "react-toast-notifications": "^2.5.1",
+    "yup": "^0.32.11"
   },
   "devDependencies": {
     "@tailwindcss/aspect-ratio": "^0.4.0",
