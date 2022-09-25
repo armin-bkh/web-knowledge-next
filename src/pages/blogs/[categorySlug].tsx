@@ -45,7 +45,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
   const {
     data: { data: postsData },
-  } = await getBlogs(queryString.stringify(query));
+  } = await getBlogs(context.req, queryString.stringify(query));
   const {
     data: { data: categories },
   } = await getCategories();

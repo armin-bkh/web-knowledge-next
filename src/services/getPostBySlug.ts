@@ -1,5 +1,15 @@
 import { http } from "@/services/httpServices";
+import { IncomingMessage } from "http";
 
-export function getPostBySlug(hashId: string, slug: string) {
-  return http.get(`/posts/${slug}`);
+export function getPostBySlug(
+  req: IncomingMessage,
+  hashId: string,
+  slug: string
+) {
+  const header = {
+    headers: {
+      Cookie: req.headers.cookie || "",
+    },
+  };
+  return http.get(`/posts/${slug}`, header);
 }

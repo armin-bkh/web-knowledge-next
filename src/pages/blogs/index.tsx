@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+import { GetServerSideProps, NextPage } from "next";
 import React from "react";
 
 import { getBlogs } from "@/services/getBlogs";
@@ -38,13 +38,13 @@ const BlogsPage: NextPage<IBlogsPageProps> = (props) => {
 
 export default BlogsPage;
 
-export const getServerSideProps = async () => {
+export const getServerSideProps: GetServerSideProps = async (context) => {
   const {
     data: { data: categories },
   } = await getCategories();
   const {
     data: { data: postsData },
-  } = await getBlogs();
+  } = await getBlogs(context.req);
 
   const { docs: posts } = postsData;
 

@@ -88,7 +88,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { hashId, postSlug } = context.query as any;
   const {
     data: { data: post },
-  } = await getPostBySlug(hashId, postSlug);
+  } = await getPostBySlug(context.req, hashId, postSlug);
 
   return {
     props: {

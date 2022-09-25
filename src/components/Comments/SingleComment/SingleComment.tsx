@@ -5,6 +5,7 @@ import { TComment } from "@/global/types";
 import { ToastMode } from "@/global/toast";
 import { postComment } from "@/services/postComment";
 import CommentForm from "@/components/Comments/CommentForm/CommentForm";
+import { useCRouter } from "@/hooks/useCRouter";
 
 export interface ISingleCommentProps {
   isReply?: boolean;
@@ -16,6 +17,8 @@ const SingleComment = (props: ISingleCommentProps) => {
   const { isReply, comment, postId } = props;
 
   const [reply, setReply] = useState(false);
+
+  const router = useCRouter();
 
   const handleReply = useCallback(() => {
     setReply((prevReply) => !prevReply);
@@ -29,8 +32,9 @@ const SingleComment = (props: ISingleCommentProps) => {
           content,
           responseTo: comment._id,
         });
-        console.log({ postId, content, responseTo: comment._id });
+
         setReply(false);
+        await router.pushHere();
         toast[ToastMode.SUCCESS](data.message);
       } catch (e: any) {
         console.log(e, "eerrrrro");
