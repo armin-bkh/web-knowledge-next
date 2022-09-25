@@ -1,9 +1,9 @@
 import React, { useCallback, useMemo, useState } from "react";
 import { PaperAirplaneIcon } from "@heroicons/react/outline";
+import toast from "react-hot-toast";
 
-import { postComment } from "@/services/postComment";
-import { useToasts } from "react-toast-notifications";
 import { ToastMode } from "@/global/toast";
+import { postComment } from "@/services/postComment";
 
 export interface ICommentFormProps {
   postId: string;
@@ -15,8 +15,6 @@ const CommentForm = (props: ICommentFormProps) => {
 
   const [comment, setComment] = useState<string>("");
   const [error, setError] = useState<boolean>(false);
-
-  const { addToast } = useToasts();
 
   const handleChange = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -35,11 +33,11 @@ const CommentForm = (props: ICommentFormProps) => {
           responseTo,
         });
         setError(false);
-        addToast("submitted", { appearance: ToastMode.SUCCESS });
+        toast[ToastMode.SUCCESS]("submitted");
         console.log(result, "result is here");
       } catch (e: any) {
         setError(true);
-        addToast(e.response.data.message, { appearance: ToastMode.ERROR });
+        toast[ToastMode.ERROR](e.response.data.message);
       }
     },
     [comment]

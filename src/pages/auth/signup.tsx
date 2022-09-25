@@ -1,13 +1,11 @@
-import React, { useCallback } from "react";
+import React, { useEffect } from "react";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { useToasts } from "react-toast-notifications";
 
-import { ToastMode } from "@/global/toast";
 import Input from "@/common/Input/Input";
-import { signup } from "@/services/auth";
 import { signupSchema } from "@/validators/signup";
+import { useAuth, useAuthActions } from "@/containers/Providers/AuthProvider";
 
 export type TSignupForm = {
   name: string;
@@ -34,28 +32,19 @@ const SignupPage = () => {
     resolver: yupResolver(signupSchema),
   });
 
-  const router = useRouter();
-  const { addToast } = useToasts();
+  const { user } = useAuth();
+  const { handleSignup } = useAuthActions();
 
-  const onSignup = useCallback(async (data: TSignupForm) => {
-    try {
-      console.log(data, "data is here");
-      const { confirmPassword, ...user } = data;
-      const result = await signup(user);
-      console.log(result, "result is here");
-      await router.replace("/");
-      addToast("welcome to web-knowledge!", {
-        appearance: ToastMode.SUCCESS,
-        autoDismiss: false,
-      });
-    } catch (e: any) {
-      addToast(e.response.data.message, {
-        appearance: ToastMode.ERROR,
-        autoDismiss: false,
-      });
-      console.log(e, "error is here");
+  const router = useRouter();
+
+  useEffect(() => {
+    if (user) {
+      (async () => {
+        await router.replace("/");
+        reset(defaultValues);
+      })();
     }
-  }, []);
+  }, [user]);
 
   return (
     <main className="container lg:max-w-screen-xl px-4 md:px-4 mx-auto min-h-screen relative flex-center p-5">
@@ -64,7 +53,7 @@ const SignupPage = () => {
         className="absolute drop-shadow-xl hidden md:block"
       />
       <form
-        onSubmit={handleSubmit(onSignup)}
+        onSubmit={handleSubmit(handleSignup)}
         className="w-full md:w-auto flex flex-col md:ml-44 bg-gray-100 dark:bg-gray-dark z-10 rounded-xl p-5 shadow-lg shadow-gray-dark/50"
       >
         <h3 className="text-4xl md:text-5xl mb-10 text-cyan-light font-black">
