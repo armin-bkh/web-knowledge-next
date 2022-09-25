@@ -61,7 +61,7 @@ const SignupPage = () => {
     <main className="container lg:max-w-screen-xl px-4 md:px-4 mx-auto min-h-screen relative flex-center p-5">
       <img
         src="/svg/signup.svg"
-        className="absolute drop-shadow-xl -z-10 md:z-0"
+        className="absolute drop-shadow-xl hidden md:block"
       />
       <form
         onSubmit={handleSubmit(onSignup)}
