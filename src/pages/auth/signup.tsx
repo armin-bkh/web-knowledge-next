@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import Link from "next/link";
 import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
@@ -81,13 +82,20 @@ const SignupPage = () => {
             type="password"
           />
         </div>
-        <button
-          type="submit"
-          disabled={!formState.isValid}
-          className="mt-5 bg-cyan-light py-3 rounded-sm text-gray-50 shadow shadow-cyan-light/50 disabled:bg-opacity-50 disabled:shadow-none"
-        >
-          Register
-        </button>
+        <div className="mt-5 flex flex-col">
+          <Link href="/auth/login">
+            <a className="mb-1 text-xs underline text-blue-400">
+              Already have an account
+            </a>
+          </Link>
+          <button
+            type="submit"
+            disabled={!formState.isValid}
+            className="bg-cyan-light py-3 rounded-sm text-gray-50 shadow shadow-cyan-light/50 disabled:bg-opacity-50 disabled:shadow-none"
+          >
+            Register
+          </button>
+        </div>
       </form>
     </main>
   );

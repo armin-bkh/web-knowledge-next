@@ -1,39 +1,17 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useCallback, useEffect, useRef, useState } from "react";
 import { useRouter } from "next/router";
 
 import NavBar from "@/containers/Layout/NavBar";
 import { useOrientation } from "@/hooks/useOreintation";
 import ChangeTheme from "@/components/common/ChangeTheme/ChangeTheme";
 
-export type TNavLink = {
-  href: string;
-  title: string;
-};
-
-const navLinks: TNavLink[] = [
-  {
-    href: "/",
-    title: "Home",
-  },
-  {
-    href: "/blogs",
-    title: "Blogs",
-  },
-  {
-    href: "/about",
-    title: "About",
-  },
-  {
-    href: "/auth/login",
-    title: "Login",
-  },
-];
-
 const Header = () => {
-  const router = useRouter();
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const { isLandscape, isMobile } = useOrientation();
+
   const navRef = useRef<HTMLElement>(null);
+
+  const { isLandscape, isMobile } = useOrientation();
+  const router = useRouter();
 
   useEffect(() => {
     if (!isMobile) {
@@ -52,7 +30,7 @@ const Header = () => {
     setIsOpen(false);
   }, [router.pathname]);
 
-  function handleCloseMenu(e: any) {
+  const handleCloseMenu = useCallback((e: any) => {
     if (
       navRef.current &&
       !navRef.current.contains(e.target) &&
@@ -60,11 +38,11 @@ const Header = () => {
     ) {
       setIsOpen(false);
     }
-  }
+  }, []);
 
-  const handleOpenMenu = () => {
+  const handleOpenMenu = useCallback(() => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
-  };
+  }, []);
 
   return (
     <header className="shadow-md px-5 py-3 dark:text-light sticky top-0 z-20 bg-gray-50 dark:bg-gray-darkest">
@@ -75,7 +53,7 @@ const Header = () => {
           </div>
           <ChangeTheme />
         </div>
-        <NavBar ref={navRef} navLinks={navLinks} isOpen={isOpen} />
+        <NavBar ref={navRef} isOpen={isOpen} />
         <button
           id="ham-menu"
           className="md:hidden flex flex-col gap-1 z-20"

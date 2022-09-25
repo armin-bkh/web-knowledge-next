@@ -1,9 +1,16 @@
-import React, { createContext, Reducer, useCallback, useContext } from "react";
+import React, {
+  createContext,
+  Reducer,
+  useCallback,
+  useContext,
+  useEffect,
+} from "react";
+import Router from "next/router";
 import { AsyncActionHandlers, useReducerAsync } from "use-reducer-async";
 import toast from "react-hot-toast";
 
 import { ToastMode } from "@/global/toast";
-import { login, signup } from "@/services/auth";
+import { initAuth, login, logout, signup } from "@/services/auth";
 import { TLoginForm } from "@/pages/auth/login";
 import { TSignupForm } from "@/pages/auth/signup";
 
@@ -35,11 +42,11 @@ export type TAuthState = {
 export const AUTH_PENDING = "AUTH_PENDING";
 export const AUTH_SUCCESS = "AUTH_SUCCESS";
 export const AUTH_FAILURE = "AUTH_FAILURE";
-export const LOGOUT = "LOGOUT";
+export const AUTH_CLEAR = "AUTH_CLEAR";
 
 export type TAuthAction =
   | { type: "AUTH_PENDING" }
-  | { type: "LOGOUT" }
+  | { type: "AUTH_CLEAR" }
   | { type: "AUTH_SUCCESS"; payload: TUser }
   | { type: "AUTH_FAILURE"; payload: string };
 
@@ -66,8 +73,11 @@ const reducer = (state: TAuthState, action: TAuthAction) => {
         loading: false,
       };
     }
-    case LOGOUT: {
-      return initialState;
+    case AUTH_CLEAR: {
+      return {
+        ...initialState,
+        loading: false,
+      };
     }
     default:
       return state;
@@ -76,12 +86,26 @@ const reducer = (state: TAuthState, action: TAuthAction) => {
 
 export type TAsyncActions =
   | { type: "LOGIN"; payload: TLoginForm }
-  | { type: "SIGNUP"; payload: TSignupForm };
+  | { type: "SIGNUP"; payload: TSignupForm }
+  | { type: "LOGOUT" }
+  | { type: "INIT_AUTH" };
 
 const asyncActionsHandler: AsyncActionHandlers<
   Reducer<TAuthState, TAuthAction>,
   TAsyncActions
 > = {
+  INIT_AUTH:
+    ({ dispatch }) =>
+    async (action) => {
+      dispatch({ type: AUTH_PENDING });
+      try {
+        const { data } = await initAuth();
+        dispatch({ type: AUTH_SUCCESS, payload: data });
+      } catch (e: any) {
+        console.log(e, "error ");
+        dispatch({ type: AUTH_FAILURE, payload: e.response.data.message });
+      }
+    },
   LOGIN:
     ({ dispatch }) =>
     async (action) => {
@@ -89,6 +113,7 @@ const asyncActionsHandler: AsyncActionHandlers<
       try {
         const { data } = await login(action.payload);
         dispatch({ type: AUTH_SUCCESS, payload: data });
+        await Router.replace("/");
         toast[ToastMode.SUCCESS]("welcome back to web-knowledge!");
       } catch (e: any) {
         console.log(e, "error ");
@@ -104,11 +129,25 @@ const asyncActionsHandler: AsyncActionHandlers<
         const { confirmPassword, ...payload } = action.payload;
         const { data } = await signup(payload);
         dispatch({ type: AUTH_SUCCESS, payload: data });
+        await Router.replace("/");
         toast[ToastMode.SUCCESS]("welcome to web-knowledge!");
       } catch (e: any) {
         console.log(e, "error ");
         dispatch({ type: AUTH_FAILURE, payload: e.response.data.message });
         toast[ToastMode.ERROR](e.response.data.message);
+      }
+    },
+  LOGOUT:
+    ({ dispatch }) =>
+    async (action) => {
+      dispatch({ type: AUTH_PENDING });
+      try {
+        await logout();
+        dispatch({ type: "AUTH_CLEAR" });
+        await Router.replace("/");
+      } catch (e: any) {
+        console.log(e, "error ");
+        dispatch({ type: AUTH_FAILURE, payload: e.response.data.message });
       }
     },
 };
@@ -124,6 +163,10 @@ const AuthProvider = (props: TAuthProviderProps) => {
     Reducer<TAuthState, TAuthAction>,
     TAsyncActions
   >(reducer, initialState, asyncActionsHandler);
+
+  useEffect(() => {
+    dispatch({ type: "INIT_AUTH" });
+  }, []);
 
   return (
     <AuthContext.Provider value={auth}>
@@ -154,10 +197,13 @@ export const useAuthActions = () => {
     [dispatch]
   );
 
-  const handleLogout = useCallback(() => {}, []);
+  const handleLogout = useCallback(() => {
+    dispatch({ type: "LOGOUT" });
+  }, []);
 
   return {
     handleLogin,
     handleSignup,
+    handleLogout,
   };
 };

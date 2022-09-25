@@ -1,18 +1,44 @@
-import React, { forwardRef } from "react";
+import React, { forwardRef, useMemo } from "react";
 import Link from "next/link";
 import { useRouter } from "next/router";
 
-import { TNavLink } from "@/containers/Layout/Header";
+import { useAuth, useAuthActions } from "@/containers/Providers/AuthProvider";
 
-export interface INavbarProps {
+export type TNavLink = {
+  href: string;
+  title: string;
+  onClick?: () => void;
+};
+
+export interface INavBarProps {
   isOpen: boolean;
-  navLinks: TNavLink[];
 }
 
-const NavBar = (props: INavbarProps, ref: any) => {
-  const { isOpen, navLinks } = props;
+const NavBar = (props: INavBarProps, ref: any) => {
+  const { isOpen } = props;
+
+  const { user } = useAuth();
+  const { handleLogout } = useAuthActions();
 
   const router = useRouter();
+
+  const navLinks: TNavLink[] = useMemo(
+    () => [
+      {
+        href: "/",
+        title: "Home",
+      },
+      {
+        href: "/blogs",
+        title: "Blogs",
+      },
+      {
+        href: user ? "/profile" : "/auth/login",
+        title: user ? user.name : "Login",
+      },
+    ],
+    [user, handleLogout]
+  );
 
   return (
     <nav
@@ -30,11 +56,22 @@ const NavBar = (props: INavbarProps, ref: any) => {
       >
         {navLinks.map((link) => (
           <NavLink
-            key={link.href}
+            key={link.title}
             navLink={link}
-            isActive={link.href === router.pathname}
+            isActive={link?.href === router.pathname}
           />
         ))}
+        {user && (
+          <li className="mt-2 md:mt-0">
+            <button
+              type="button"
+              onClick={handleLogout}
+              className="px-5 py-2 font-bold w-full inline-block bg-gray-dark text-white rounded-full dark:bg-gray-dark"
+            >
+              Logout
+            </button>
+          </li>
+        )}
       </ul>
     </nav>
   );
@@ -50,19 +87,21 @@ export interface INavLinkProps {
 export function NavLink(props: INavLinkProps) {
   const { isActive, navLink } = props;
 
+  const NavItem = useMemo(() => (navLink.href ? Link : "button"), [navLink]);
+
   return (
     <li className="relative first:mt-0 mt-2 md:mt-0">
-      <Link href={navLink.href}>
+      <NavItem href={navLink.href}>
         <a
-          className={`px-5 py-2 font-bold w-full inline-block ${
+          className={`px-5 py-2 font-bold w-full inline-block rounded-md ${
             isActive
-              ? "text-cyan-light dark:bg-cyan-light dark:text-light rounded-md"
+              ? "text-cyan-light dark:bg-cyan-light dark:text-light"
               : null
           }`}
         >
           {navLink.title}
         </a>
-      </Link>
+      </NavItem>
       <span
         className={`w-full h-0.5 block mt-2 absolute rounded-md dark:hidden ${
           isActive
