@@ -31,7 +31,6 @@ const ThemeProvider = (props: IThemeProviderProps) => {
       : "light";
 
     const defaultTheme = savedTheme || browserTheme;
-    console.log({ savedTheme, browserTheme, defaultTheme });
 
     setTheme(defaultTheme as TTheme["theme"]);
     document.documentElement.classList[

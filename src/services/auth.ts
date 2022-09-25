@@ -7,20 +7,18 @@ export type TAuthBody = {
   password: string;
 };
 
-const authRequestConfig = { withCredentials: true };
-
 export function initAuth() {
-  return http.get("/users/load", authRequestConfig);
+  return http.get("/users/load");
 }
 
 export function login(user: TAuthBody) {
-  return http.post("/users/signin", user, authRequestConfig);
+  return http.post("/users/signin", user);
 }
 
 export function signup(user: TAuthBody) {
-  return http.post("/users/signup", user, authRequestConfig);
+  return http.post("/users/signup", user);
 }
 
 export function logout() {
-  return http.get("users/logout", authRequestConfig);
+  return http.get("users/logout");
 }

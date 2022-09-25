@@ -16,8 +16,8 @@ const ReplyComments = (props: IReplyComments) => {
     <>
       {comments.map((comment: any) =>
         parentCommentId === comment.responseTo ? (
-          <div key={comment.id} className="ml-5">
-            <SingleComment comment={comment} postId={postId} />
+          <div key={comment._id} className="ml-2 md:ml-5 flex flex-col gap-2">
+            <SingleComment comment={comment} postId={postId} isReply />
             <ReplyComments
               comments={comments}
               parentCommentId={comment._id}

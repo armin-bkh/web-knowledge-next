@@ -12,8 +12,6 @@ export interface ICommentsListProps {
 const CommentsList = (props: ICommentsListProps) => {
   const { comments, postId } = props;
 
-  console.log(comments);
-
   return (
     <div className="flex flex-col w-full gap-y-2">
       {comments?.map(
