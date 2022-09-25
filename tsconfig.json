@@ -28,7 +28,8 @@
       "@/styles/*": ["./src/styles/*"],
       "@/types/*": ["./src/types/*"],
       "@/public/*": ["./public/*"],
-      "@/global/*": ["./src/global/*"]
+      "@/global/*": ["./src/global/*"],
+      "@/validators/*": ["./src/validators/*"],
     }
   },
   "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx"],

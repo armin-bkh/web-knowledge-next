@@ -1,9 +1,13 @@
 import React, { useCallback } from "react";
+import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
+import { useToasts } from "react-toast-notifications";
 
+import { ToastMode } from "@/global/toast";
 import Input from "@/common/Input/Input";
-import { signupSchema } from "../../validators/signup";
+import { signup } from "@/services/auth";
+import { signupSchema } from "@/validators/signup";
 
 export type TSignupForm = {
   name: string;
@@ -30,8 +34,27 @@ const SignupPage = () => {
     resolver: yupResolver(signupSchema),
   });
 
-  const onSignup = useCallback((data: TSignupForm) => {
-    console.log(data, "data is here");
+  const router = useRouter();
+  const { addToast } = useToasts();
+
+  const onSignup = useCallback(async (data: TSignupForm) => {
+    try {
+      console.log(data, "data is here");
+      const { confirmPassword, ...user } = data;
+      const result = await signup(user);
+      console.log(result, "result is here");
+      await router.replace("/");
+      addToast("welcome to web-knowledge!", {
+        appearance: ToastMode.SUCCESS,
+        autoDismiss: false,
+      });
+    } catch (e: any) {
+      addToast(e.response.data.message, {
+        appearance: ToastMode.ERROR,
+        autoDismiss: false,
+      });
+      console.log(e, "error is here");
+    }
   }, []);
 
   return (
