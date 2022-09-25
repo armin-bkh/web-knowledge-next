@@ -1,8 +1,9 @@
 import React, { useCallback } from "react";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
-import { signupSchema } from "../../validators/signup";
+
 import Input from "@/common/Input/Input";
+import { signupSchema } from "../../validators/signup";
 
 export type TSignupForm = {
   name: string;
@@ -59,7 +60,7 @@ const SignupPage = () => {
             control={control}
             name="password"
             label="password"
-            type="pas"
+            type="password"
           />
           <Input
             control={control}

@@ -5,7 +5,7 @@ export interface IInputProps {
   control: FieldValue<any>;
   name: string;
   label: string;
-  type: Exclude<HTMLInputElement["type"], "textarea">;
+  type: string;
 }
 
 const Input = (props: IInputProps) => {
@@ -35,7 +35,7 @@ const Input = (props: IInputProps) => {
                 className={`
                 px-3 py-1 text-sm
                   md:px-5 md:py-2 rounded-sm outline-none bg-gray-50 focus:border shadow focus:border-cyan-light bg-gray-50 dark:bg-gray-darkest dark:text-gray-50
-                ${field.value && !hasError && "border-cyan-light"}
+                ${field.value && !hasError && "border border-cyan-light"}
                 ${hasError && "border border-red-400"}
                 `}
               />
