@@ -1,13 +1,14 @@
-import { GetServerSideProps, NextPage } from "next";
 import React from "react";
+import { GetServerSideProps, NextPage } from "next";
+import queryStrings from "query-string";
 
+import { TCategory, TBlog } from "@/global/types";
 import { getBlogs } from "@/services/getBlogs";
 import { getCategories } from "@/services/getCategories";
 import SortBar from "@/components/SortBar/SortBar";
 import BlogsList from "@/components/Blogs/BlogList/BlogsList";
 import Accordion from "@/components/Category/Accordion/Accordion";
 import MobileCategory from "@/components/Category/MobileCategory/MobileCategory";
-import { TCategory, TBlog } from "@/global/types";
 
 export interface IBlogsPageProps {
   categories: TCategory[];
@@ -22,11 +23,11 @@ const BlogsPage: NextPage<IBlogsPageProps> = (props) => {
         <div className="hidden md:block">
           <Accordion categories={categories} />
         </div>
-        <div className="block md:hidden">
+        <div className="block md:hidden max-h-14">
           <MobileCategory categories={categories} />
         </div>
       </section>
-      <section className="col-span-12 md:col-span-9 flex">
+      <section className="col-span-12 md:col-span-9 flex max-h-14 md:h-auto">
         <SortBar />
       </section>
       <section className="col-span-12 md:col-span-9 grid">
@@ -39,12 +40,14 @@ const BlogsPage: NextPage<IBlogsPageProps> = (props) => {
 export default BlogsPage;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
+  const { req, query } = context;
+
   const {
     data: { data: categories },
   } = await getCategories();
   const {
     data: { data: postsData },
-  } = await getBlogs(context.req);
+  } = await getBlogs(req, queryStrings.stringify(query));
 
   const { docs: posts } = postsData;
 

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ChevronDownIcon, FilterIcon } from "@heroicons/react/outline";
 
 import { TCategory } from "@/global/types";
+import { useCRouter } from "@/hooks/useCRouter";
 
 export interface IAccordionProps {
   categories: TCategory[];
@@ -12,6 +13,8 @@ const Accordion = (props: IAccordionProps) => {
   const { categories } = props;
 
   const [isOpen, setIsOpen] = useState(true);
+
+  const { query } = useCRouter();
 
   const handleToggleAccordion = () => {
     setIsOpen((prevIsOpen) => !prevIsOpen);
@@ -40,7 +43,15 @@ const Accordion = (props: IAccordionProps) => {
         } dark:bg-gray-dark dark:text-light`}
       >
         <ul>
-          <li className="py-2 cursor-pointer last:border-b-0 border-b dark:border-gray-darkest hover:bg-light hover:dark:bg-cyan-light px-5">
+          <li
+            className={`py-2 cursor-pointer last:border-b-0 border-b
+               dark:border-gray-darkest hover:bg-light hover:dark:bg-cyan-light px-5
+               ${
+                 !query.categorySlug
+                   ? "text-light bg-cyan-light"
+                   : "dark:border-gray-darkest hover:bg-light hover:dark:bg-light hover:dark:text-gray-darkest"
+               }`}
+          >
             <Link href="/blogs">
               <a className="w-full block">All</a>
             </Link>
@@ -48,7 +59,13 @@ const Accordion = (props: IAccordionProps) => {
           {categories.map((category) => (
             <li
               key={category._id}
-              className="py-2 cursor-pointer last:border-b-0 border-b dark:border-gray-darkest hover:bg-light hover:dark:bg-cyan-light px-5"
+              className={`py-2 cursor-pointer last:border-b-0 border-b
+               dark:border-gray-darkest hover:bg-light hover:dark:bg-cyan-light px-5
+               ${
+                 query.categorySlug === category.englishTitle
+                   ? "text-light bg-cyan-light"
+                   : "dark:border-gray-darkest hover:bg-light hover:dark:bg-light hover:dark:text-gray-darkest"
+               }`}
             >
               <Link href={`/blogs/${category.englishTitle}`}>
                 <a className="w-full block">{category.title}</a>

@@ -18,11 +18,11 @@ const BlogsBySlugPage: NextPage<IBlogsPageProps> = (props) => {
         <div className="hidden md:block">
           <Accordion categories={categories} />
         </div>
-        <div className="block md:hidden">
+        <div className="block md:hidden max-h-14">
           <MobileCategory categories={categories} />
         </div>
       </section>
-      <section className="col-span-12 md:col-span-9 flex">
+      <section className="col-span-12 md:col-span-9 flex max-h-14 md:h-auto">
         <SortBar />
       </section>
       <section className="col-span-12 md:col-span-9 grid">
@@ -35,17 +35,13 @@ const BlogsBySlugPage: NextPage<IBlogsPageProps> = (props) => {
 export default BlogsBySlugPage;
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
-  const query = {
-    page: 1,
-    limit: 6,
-    ...context.query,
-  };
+  const { req, query } = context;
 
   console.log(queryString.stringify(query), "query is her");
 
   const {
     data: { data: postsData },
-  } = await getBlogs(context.req, queryString.stringify(query));
+  } = await getBlogs(req, queryString.stringify(query));
   const {
     data: { data: categories },
   } = await getCategories();

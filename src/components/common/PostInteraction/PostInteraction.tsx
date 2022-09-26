@@ -64,16 +64,17 @@ const PostInteraction = (props: IPostInterActionProps) => {
         onClick={() => handlePostInteraction("like")}
         className={`${paddingSize} rounded-md flex items-center bg-red-300 transition text-red-600 hover:text-red-300 hover:bg-red-600`}
       >
+        {post.likesCount}{" "}
         {post.isLiked ? (
-          <SolidHeartIcon className="inline" width={iconSize} />
+          <SolidHeartIcon className="inline ml-1" width={iconSize} />
         ) : (
-          <HeartIcon className="inline" width={iconSize} />
+          <HeartIcon className="inline ml-1" width={iconSize} />
         )}
       </button>
       <button
         className={`${paddingSize} rounded-md flex items-center bg-gray-300`}
       >
-        {post.comments?.length}{" "}
+        {post.commentsCount}{" "}
         <AnnotationIcon className="inline ml-1" width={iconSize} />
       </button>
     </div>
