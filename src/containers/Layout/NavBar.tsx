@@ -1,7 +1,7 @@
 import React, { forwardRef, useMemo } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
+import { useCRouter } from "@/hooks/useCRouter";
 import { useAuth, useAuthActions } from "@/containers/Providers/AuthProvider";
 
 export type TNavLink = {
@@ -20,7 +20,7 @@ const NavBar = (props: INavBarProps, ref: any) => {
   const { user } = useAuth();
   const { handleLogout } = useAuthActions();
 
-  const router = useRouter();
+  const router = useCRouter();
 
   const navLinks: TNavLink[] = useMemo(
     () => [

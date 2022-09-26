@@ -34,6 +34,18 @@ export type TBlog = {
   __v: number;
 };
 
+export type TPaginateDetail = {
+  totalDocs: number;
+  limit: number;
+  totalPages: number;
+  page: number;
+  pagingCounter: number;
+  hasPrevPage: boolean;
+  hasNextPage: boolean;
+  prevPage: number | null;
+  nextPage: number | null;
+};
+
 export type TBlogCategory = {
   _id: string;
   title: string;

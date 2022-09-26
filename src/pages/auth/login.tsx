@@ -1,11 +1,11 @@
 import React, { useEffect } from "react";
 import Link from "next/link";
-import { useRouter } from "next/router";
 import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 
 import Input from "@/common/Input/Input";
 import { loginSchema } from "@/validators/login";
+import { useCRouter } from "@/hooks/useCRouter";
 import { useAuth, useAuthActions } from "@/containers/Providers/AuthProvider";
 
 export type TLoginForm = {
@@ -30,7 +30,7 @@ const LoginPage = () => {
   const { user } = useAuth();
   const { handleLogin } = useAuthActions();
 
-  const router = useRouter();
+  const router = useCRouter();
 
   useEffect(() => {
     if (user) {

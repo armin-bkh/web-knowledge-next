@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useRef, useState } from "react";
-import { useRouter } from "next/router";
 
 import NavBar from "@/containers/Layout/NavBar";
+import { useCRouter } from "@/hooks/useCRouter";
 import { useOrientation } from "@/hooks/useOreintation";
 import ChangeTheme from "@/components/common/ChangeTheme/ChangeTheme";
 
@@ -11,7 +11,7 @@ const Header = () => {
   const navRef = useRef<HTMLElement>(null);
 
   const { isLandscape, isMobile } = useOrientation();
-  const router = useRouter();
+  const router = useCRouter();
 
   useEffect(() => {
     if (!isMobile) {
