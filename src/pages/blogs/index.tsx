@@ -20,8 +20,6 @@ export interface IBlogsPageProps {
 const BlogsPage: NextPage<IBlogsPageProps> = (props) => {
   const { categories, posts, paginateDetail } = props;
 
-  console.log("test log");
-
   return (
     <main className="container lg:max-w-screen-xl px-4 md:px-4 mx-auto grid grid-cols-12 min-h-screen grid-rows-[30px_100px_minmax(400px,_1fr)] md:grid-rows-[60px_minmax(400px,_1fr)_100px] gap-5 py-5">
       <section className="col-span-12 md:col-span-3 md:row-span-2">
