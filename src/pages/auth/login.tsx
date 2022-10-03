@@ -27,6 +27,8 @@ const LoginPage = () => {
     resolver: yupResolver(loginSchema),
   });
 
+  console.log("test");
+
   const { user } = useAuth();
   const { handleLogin } = useAuthActions();
 
